@@ -7,7 +7,7 @@ This is a program for finding and adding lyrics to MP3 files
 - Also you can add lyrics manually
 
 
-* ### OS Supported (for now) ###
+* ### OS Supported ###
 	![Linux Support](https://img.shields.io/badge/Linux-Support-brightgreen.svg)
 	![Windows Support](https://img.shields.io/badge/Windows-Support-brightgreen.svg)
 
