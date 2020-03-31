@@ -45,7 +45,7 @@ def not_added(file=""):
         move_to_without_lyrics(file)
 
 
-def genius_search(tag, url):
+def genius_search(url):
     html = requests.get(url).text
     soup = BeautifulSoup(html, "html.parser")
     lyrics = soup.find("div", {"class": "song_body column_layout"}).find_all("div")[2].get_text()
@@ -54,7 +54,7 @@ def genius_search(tag, url):
     return ("genius", lyrics.strip())
 
 
-def azlyrics_search(tag, url):
+def azlyrics_search(url):
     html = requests.get(url).text
     soup = BeautifulSoup(html, "html.parser")
     lyrics = soup.find("div", {"class": "col-xs-12 col-lg-8 text-center"}).find_all("div")[5].get_text()
@@ -81,7 +81,7 @@ def google_search(tag):
         for url in urls:
             try:
                 if sites[i] in url:
-                    source, lyrics = functions[i](tag, url)
+                    source, lyrics = functions[i](url)
                     return (source, lyrics)
             except:
                 continue
@@ -120,9 +120,9 @@ def set_lyrics_manual(path, file):
         try:
             user_input = input("  link: ")
             if "genius.com" in user_input.lower():
-                source, lyrics = genius_search(tag, user_input)
+                source, lyrics = genius_search(user_input)
             elif "azlyrics.com" in user_input.lower():
-                source, lyrics = azlyrics_search(tag, uruser_inputl)
+                source, lyrics = azlyrics_search(user_input)
             else:
                 return "   lyrics didn't change"
         except:
